@@ -107,7 +107,7 @@ def post_comment(request, next=None, using=None):
     # Chek if comment object has image attribute
     try:
         getattr(comment, "image")
-        comment.image = request.FILES['image'] or None
+        comment.image = request.FILES.get('image', None)
     except AttributeError:
         pass
 
