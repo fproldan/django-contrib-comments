@@ -105,7 +105,7 @@ def post_comment(request, next=None, using=None):
     comment.ip_address = request.META.get("REMOTE_ADDR", None)
 
     # Chek if comment object has image attribute
-    image = getattr(comment, "image")
+    image = hasattr(comment, "image")
     if image:
         comment.image = request.FILES.get('image', None)
 
