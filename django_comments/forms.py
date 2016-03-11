@@ -103,6 +103,7 @@ class CommentDetailsForm(CommentSecurityForm):
     url = forms.URLField(label=_("URL"), required=False)
     comment = forms.CharField(label=_('Comment'), widget=forms.Textarea,
                               max_length=COMMENT_MAX_LENGTH)
+    image = forms.ImageField(label=_('Foto'), required=False)
 
     def get_comment_object(self):
         """
@@ -143,6 +144,7 @@ class CommentDetailsForm(CommentSecurityForm):
             user_email=self.cleaned_data["email"],
             user_url=self.cleaned_data["url"],
             comment=self.cleaned_data["comment"],
+            image=self.cleaned_data["image"],
             submit_date=timezone.now(),
             site_id=settings.SITE_ID,
             is_public=True,

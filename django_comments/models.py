@@ -61,6 +61,8 @@ class CommentAbstractModel(BaseCommentAbstractModel):
 
     comment = models.TextField(_('comment'), max_length=COMMENT_MAX_LENGTH)
 
+    image = models.ImageField(_('foto'), upload_to=None, null=True, blank=True)
+
     # Metadata about the comment
     submit_date = models.DateTimeField(_('date/time submitted'), default=None, db_index=True)
     ip_address = models.GenericIPAddressField(_('IP address'), unpack_ipv4=True, blank=True, null=True)
