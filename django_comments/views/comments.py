@@ -103,6 +103,14 @@ def post_comment(request, next=None, using=None):
     # Otherwise create the comment
     comment = form.get_comment_object()
     comment.ip_address = request.META.get("REMOTE_ADDR", None)
+
+    # Chek if comment object has image attribute
+    try:
+        getattr(comment, "image")
+        comment.image = request.FILES['image'] or None
+    except AttributeError:
+        pass
+
     if request.user.is_authenticated():
         comment.user = request.user
 
